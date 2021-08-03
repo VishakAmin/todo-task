@@ -1,23 +1,51 @@
-import logo from './logo.svg';
+
+import React,{useState} from 'react';
 import './App.css';
+import TodoInput from './components/TodoInput';
+import TodoLists from './components/TodoLists';
 
 function App() {
+
+  const [TodoList, setTodoList] = useState([
+    {text:"Finish This app", id:"g1"}
+  ])
+
+
+  let todo = (
+    <p style={{textAlign:"center"}}>No Todo Found. Can you add one?</p>
+  )
+
+  const addTodoList = (task) => {
+    setTodoList(prevList => {
+      const updatedList = [...prevList];
+      updatedList.unshift({text:task, id: Math.random().toString()})
+      return updatedList;
+    })
+    console.log(TodoList);
+  }
+
+  const deleteTodolist = (id) => {
+    setTodoList(prevList => {
+      const updatedList = prevList.filter(list => list.id !== id);
+      return updatedList
+    })
+
+  }
+  
+  if (TodoList.length > 0) {
+    todo = (
+      <TodoLists list={TodoList} onDeletelist={deleteTodolist}/>
+    )
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <section id="todolist-form">
+        <TodoInput onAddTodo={addTodoList}/>
+      </section>
+      <section>
+        {todo}
+      </section>
     </div>
   );
 }
