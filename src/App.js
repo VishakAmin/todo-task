@@ -7,7 +7,7 @@ import TodoLists from './components/Todo/TodoList/TodoLists';
 function App() {
 
   const [TodoList, setTodoList] = useState([
-    {text:"Finish This app", id:"g1"}
+    {text:"Finish This app", id:"g1", completed: false}
   ])
 
   let todo = (
@@ -17,7 +17,7 @@ function App() {
   const addTodoList = (task) => {
     setTodoList(prevList => {
       const updatedList = [...prevList];
-      updatedList.unshift({text:task, id: Math.random().toString()})
+      updatedList.unshift({text:task, id: Math.random().toString(), completed: false })
       return updatedList;
     })
     console.log(TodoList);
@@ -30,10 +30,17 @@ function App() {
     })
 
   }
+
+  const completedTodolist = (id) => {
+      let completed = TodoList.map(list=>{
+        return list.id === id ? { ...list, completed: !list.completed } : { ...list};
+      })
+      setTodoList(completed)
+  }
   
   if (TodoList.length > 0) {
     todo = (
-      <TodoLists list={TodoList} onDeletelist={deleteTodolist}/>
+      <TodoLists list={TodoList} onDeletelist={deleteTodolist} onCompletedList ={completedTodolist} />
     )
   }
 
