@@ -20,5 +20,5 @@
 .formControl input:focus {
   outline: none;
   background: #fff;
-  border-color: purple;
+  border-color: #3d3635;
 }

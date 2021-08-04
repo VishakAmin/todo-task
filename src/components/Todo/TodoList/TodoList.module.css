@@ -1,0 +1,24 @@
+.listItems {
+  list-style: none;
+  max-width: 39rem;
+  margin: 0;
+  padding: 0;
+}
+
+.items {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.text {
+  padding: 0.5rem;
+  white-space: initial;
+}
+
+.button {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+}

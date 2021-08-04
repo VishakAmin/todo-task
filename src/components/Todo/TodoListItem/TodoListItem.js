@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from "./TodoListItem.module.css"
 
 const TodoListItem = (props) => {
 
@@ -6,7 +7,7 @@ const TodoListItem = (props) => {
     props.onDelete(props.id)
   }
   return (
-    <li onClick={deleteHandler}>
+    <li onClick={deleteHandler} className={classes.listItem}>
         {props.children}
     </li>
   )

@@ -1,15 +1,14 @@
 
 import React,{useState} from 'react';
 import './App.css';
-import TodoInput from './components/TodoInput';
-import TodoLists from './components/TodoLists';
+import TodoInput from './components/Todo/TodoInput/TodoInput';
+import TodoLists from './components/Todo/TodoList/TodoLists';
 
 function App() {
 
   const [TodoList, setTodoList] = useState([
     {text:"Finish This app", id:"g1"}
   ])
-
 
   let todo = (
     <p style={{textAlign:"center"}}>No Todo Found. Can you add one?</p>
@@ -43,7 +42,7 @@ function App() {
       <section id="todolist-form">
         <TodoInput onAddTodo={addTodoList}/>
       </section>
-      <section>
+      <section id="lists">
         {todo}
       </section>
     </div>
